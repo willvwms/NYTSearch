@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>nyarticle-search</title>
+	<!--Bootstrap link-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Javascript -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="nyt.css">
+</head>
+
+<!-- var search
+numrecords -->
+
+<body>
+	<div class="container-jumbo">
+		<div class="jumbotron jumbotron-fluid">
+	    		<h1 class="display-3"><strong>New York Times Search</strong></h1>    		
+		</div> <!-- closing for jumbotron class-->
+	</div><!-- closing div for container -->
+	
+<div class = "container-form">
+	<form>
+	  <div class="form-group">
+	    <label for="searchTerm">Search Term: </label>
+
+	    <input type="search" class="form-control" id="articleSearch" placeholder="">
+	  </div> <!-- closing div for form-group search -->
+
+	  <div class="form-group">
+	    <label for="numberOfRetrieved">Number of Records to Retrieve:</label>
+	    <select class="form-control" id="numRecords">
+			      <option>1</option>
+			      <option>5</option>
+			      <option>10</option>
+	    </select> <!-- end of select numRecords -->
+	  </div> <!-- end div class for option portion of form -->
+
+	  <div class="form-group">
+
+	    <label for="searchTerm">Start Year (Optional): </label>
+
+	    <input type="search" class="form-control" id="startYear" placeholder="">
+	  </div>
+
+	  <div class="form-group">
+
+	    <label for="searchTerm">End Year (Optional): </label>
+
+	    <input type="search" class="form-control" id="endYear" placeholder="">
+	  </div>
+	</form>
+
+</div>
+<button type="button" class="btn btn-secondary"> <span class="glyphicon glyphicon glyphicon-folder-close" aria-hidden="true"></span>   Search</button>
+<button type="button" class="btn btn-secondary">Clear Results</button>
+
+</div>  <!-- closing div for form container -->
+<br>
+
+<div container = "output">
+	<div class = "row">
+	  <div class = "col-md-4">.col-md-4</div>
+	</div>
+</div>	<!-- ending container for output -->
+
+
+<script type="text/javascript">
+		
+var params = {
+    result: [],
+
+    search: $("#articleSearch").val(),
+    // beginning :$("#movie-input").val(),
+    // ending: $("#movie-input").val(),
+}
+
+if(startDate != ""){
+    params.startDate = $("#startYear");
+};
+if(endDate != ""){
+    params.endDate = $("#endYear");
+};
+
+var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
+url += $.params(params);
+
+$.ajax({
+          url: url,
+          method: "GET"
+        })
+        .done(function(response) {
+          }
+          console.log(response);
+	</script>
+</body>
+</html>
